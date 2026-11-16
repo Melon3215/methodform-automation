@@ -1,0 +1,57 @@
+name: "업무 자동화 문의 / Workflow request"
+description: "견적 상담: 공개 이슈에 실제 고객 데이터·연락처·비밀번호·API 키를 올리지 마세요."
+title: "[Automation Request] "
+labels: ["customer-inquiry"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        작업 가능 여부와 범위를 확인하는 **무료 문의**입니다. 게시물은 공개됩니다.
+        **실명, 연락처, 회사 비밀, 실제 고객/거래 데이터, API 키, 비밀번호를 올리지 마세요.**
+        Please use only fictional/sanitized examples; GitHub Issues are public.
+  - type: dropdown
+    id: task
+    attributes:
+      label: 어떤 작업인가요? / What do you need?
+      options:
+        - CSV/엑셀 병합 및 정리
+        - 중복·오류 데이터 검증
+        - 반복 파일 처리/보고서
+        - API 또는 웹 업무 연동 (사전 검토 필요)
+        - 기타 (설명에 적어 주세요)
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: 반복되는 업무 흐름 / Current process
+      description: 개인정보 없는 가상 예시로 필요한 입력·출력, 반복 주기를 알려주세요.
+      placeholder: "월요일마다 CSV 3개를 다운로드하고 주문번호를 기준으로 중복을 제거하고 싶습니다."
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 완료 조건 / Required outcome
+      placeholder: "결과 CSV + 중복/오류 보고서가 필요합니다."
+    validations:
+      required: true
+  - type: dropdown
+    id: budget
+    attributes:
+      label: 예산 범위 / Budget range
+      options:
+        - 7만원 미만
+        - 7~20만원
+        - 20~50만원
+        - 50만원 이상
+        - 아직 정하지 않음
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: 안전 확인 / Privacy
+      options:
+        - label: "이 문의에는 개인정보·비밀번호·실제 고객 자료를 포함하지 않았습니다."
+          required: true

@@ -1,0 +1,2 @@
+# MethodForm Automation
+Public business inquiry site for actual paid CSV, Excel and workflow automation services. No personal contact exposed. All requests use sanitized example data. Scope and payment must be agreed before work.
