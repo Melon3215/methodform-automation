@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>무료 CSV 중복·오류 검사기 | MethodForm Automation</title>
+<meta name="description" content="설치·업로드 없이 CSV 파일의 중복 행과 열 개수 오류를 검사하고, 검토 결과를 CSV로 저장하세요. 모든 처리는 브라우저 안에서만 이루어집니다.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#f6f5f0">
+<link rel="canonical" href="https://melon3215.github.io/methodform-automation/csv-checker.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="checker.css">
+<script type="module" src="checker.js"></script>
+</head>
+<body>
+<header class="top"><a class="logo" href="./">MethodForm <span>Automation</span></a><nav aria-label="주요 메뉴"><a href="./#service">맞춤 자동화</a><a href="./csv-checker.html" aria-current="page">무료 CSV 검사기</a><a class="nav-cta" href="https://github.com/Melon3215/methodform-automation/issues/new?template=service-request.yml">작업 문의</a></nav></header>
+<main>
+<section class="checker-hero wrap">
+  <div><p class="eyebrow">무료 업무 도구 / 데이터를 외부로 보내지 않습니다</p><h1>CSV 중복과 오류를<br><em>여기서 바로 확인하세요.</em></h1><p class="lead">파일을 선택하거나 텍스트를 붙여 넣으면, 중복 행·빈 기준값·열 개수 오류를 즉시 구분합니다. 결과는 엑셀에서 열 수 있는 CSV로 저장할 수 있습니다.</p></div>
+  <div class="privacy-mark"><span class="privacy-icon" aria-hidden="true">◎</span><strong>브라우저 내부 처리</strong><span>서버 업로드 · 회원가입 · 저장 없음</span><small>처리는 현재 열린 탭에서만 진행합니다.</small></div>
+</section>
+<section class="tool wrap" aria-labelledby="tool-title">
+  <div class="tool-head"><div><p class="eyebrow">01 / 검사할 데이터</p><h2 id="tool-title">파일 또는 CSV 텍스트 선택</h2></div><span class="limit-chip">최대 2 MiB · 20,000행</span></div>
+  <div class="input-grid">
+    <div class="upload-card"><label for="csv-file" class="upload-label"><span aria-hidden="true" class="upload-icon">↥</span><strong>CSV 파일 선택</strong><span>파일은 업로드되지 않습니다</span></label><input id="csv-file" type="file" accept=".csv,text/csv,text/plain" aria-describedby="file-help"><p id="file-help" class="minor">UTF-8 CSV 권장. 한글이 깨지는 경우 원본 파일의 문자 인코딩을 확인하세요.</p></div>
+    <div class="paste-card"><label for="csv-text"><strong>또는 CSV 텍스트 붙여넣기</strong><span class="minor">민감 정보가 없는 예제로 먼저 확인하세요.</span></label><textarea id="csv-text" rows="8" spellcheck="false" placeholder="주문번호,상품,수량&#10;A001,키보드,1&#10;A002,마우스,2&#10;A001,키보드,1"></textarea><div class="small-actions"><button type="button" id="sample" class="minor-button">예제 데이터 불러오기</button><button type="button" id="clear" class="minor-button ghost">입력 초기화</button></div></div>
+  </div>
+  <div class="tool-actions"><button type="button" id="inspect" class="button main">CSV 분석하기 <span aria-hidden="true">↗</span></button><span id="input-message" role="status" aria-live="polite">파일과 입력 텍스트 중 마지막으로 선택한 내용을 분석합니다.</span></div>
+</section>
+<section id="results" class="results wrap" aria-labelledby="result-title" hidden>
+  <div class="result-heading"><div><p class="eyebrow">02 / 데이터 검사 결과</p><h2 id="result-title">행별 검사 리포트</h2></div><button type="button" id="download" class="button quiet">검사 결과 CSV 저장 ↓</button></div>
+  <div class="stat-grid">
+    <article><span>검사한 데이터 행</span><strong id="total">—</strong></article>
+    <article><span>중복 행</span><strong id="duplicate">—</strong></article>
+    <article><span>열 개수 불일치</span><strong id="bad-columns">—</strong></article>
+    <article><span>기준 열 빈칸</span><strong id="empty-key">—</strong></article>
+  </div>
+  <div class="review-settings"><div><h3>중복 확인 기준 열</h3><p>선택한 열의 값을 기준으로 비교합니다. 앞뒤 공백과 영문 대소문자 차이는 무시합니다.</p></div><fieldset id="key-fields"><legend class="sr-only">중복 확인 기준 열 선택</legend></fieldset></div>
+  <div class="table-header"><p id="result-summary" role="status" aria-live="polite"></p><label for="status-filter">행 필터 <select id="status-filter"><option value="all">전체</option><option value="중복">중복</option><option value="열 개수 불일치">열 개수 불일치</option><option value="기준 열 빈칸">기준 열 빈칸</option><option value="정상">정상</option></select></label></div>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="검사 결과 표, 가로 스크롤 가능"><table><thead id="result-head"></thead><tbody id="result-body"></tbody></table></div>
+  <div class="table-foot"><span>화면에는 최대 20개 행만 표시하며, 저장 파일에는 전체 검사 결과가 포함됩니다.</span><span>중복 행의 ‘최초행’은 원본 파일의 첫 발견 위치입니다.</span></div>
+</section>
+<section class="checker-cta wrap">
+  <div><p class="eyebrow">반복 작업을 줄이는 다음 단계</p><h2>매주 같은 CSV를 정리하시나요?</h2><p>중복 제거, 여러 파일 합치기, 검증 보고서 자동 생성 등은 작업 조건에 맞게 프로그램으로 만들 수 있습니다. 상담에는 개인정보 없는 예시와 원하는 결과만 적어 주세요.</p></div>
+  <a class="button white" href="https://github.com/Melon3215/methodform-automation/issues/new?template=service-request.yml">맞춤 자동화 범위 무료 문의 ↗</a>
+</section>
+<section class="faq wrap" aria-labelledby="faq-title"><p class="eyebrow">자주 묻는 질문</p><h2 id="faq-title">검사 방식과 한계</h2><details><summary>파일이 인터넷으로 전송되나요?</summary><p>아니요. 이 검사기는 파일의 내용을 브라우저에서만 읽습니다. 검사 결과를 서버에 보내거나 저장하지 않으며, 탭을 닫으면 분석 내용은 사라집니다. 민감한 파일은 사용 환경과 브라우저 확장 프로그램도 확인하세요.</p></details><details><summary>같은 행인지 어떻게 판단하나요?</summary><p>선택한 기준 열들의 값이 같은지를 확인합니다. 공백·영문 대소문자·호환 문자 차이를 정규화합니다. 두 번째 등장부터 중복으로 표시합니다. 열 개수가 다른 행과 기준값이 비어 있는 행은 따로 표시합니다.</p></details><details><summary>엑셀 파일(xlsx)도 지원하나요?</summary><p>현재는 쉼표·탭·세미콜론 구분의 UTF-8 텍스트 CSV만 지원합니다. Excel에서 ‘CSV UTF-8’로 저장해 검사하세요. 복잡한 엑셀 자동화는 맞춤 문의를 이용해 주세요.</p></details><details><summary>검사하면 중복이 자동 삭제되나요?</summary><p>아니요. 원본 보존을 우선해 중복 여부와 최초 등장 행을 표시한 리포트만 저장합니다. 실제 삭제·병합 작업은 데이터별 기준과 확인 절차가 필요합니다.</p></details></section>
+</main>
+<footer class="wrap"><p>© MethodForm Automation · 업무용 무료 도구</p><p>보안·정확성 검토를 위한 보조 도구이며 법적·회계적 품질 인증을 제공하지 않습니다.</p></footer>
+</body></html>
