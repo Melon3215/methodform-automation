@@ -4,16 +4,30 @@ Korean-language remote custom automation enquiry site and a free browser-only CS
 
 Public website: https://melon3215.github.io/methodform-automation/
 
+## Available customer services
+
+**Paid, fixed-scope CSV cleanup:** [CSV 파일 합치기·완전 중복 행 정리 — 69,000원](https://melon3215.github.io/methodform-automation/csv-merge-service.html). Korean remote service, not a software license. Maximum 3 UTF-8 comma-delimited files, 5,000 rows total / 20 columns / 2 MiB, with separate CSV output, JSON rule/audit, and Korean summary. A quote/availability check is **free**; price, scope, timeline (normally 3 business days after scope agreement and payment) and deliverables must be agreed before contract. No checkout or successful client sale is claimed.
+
+[Submit a request to check the scope](https://github.com/Melon3215/methodform-automation/issues/new?template=csv-merge-request.yml). **Public GitHub issue + GitHub login required. Never post personal information, passwords, secrets or a real client dataset.** Use a fictitious CSV example first.
+
+**Free self-service tool:** [CSV 중복·오류 검사기](https://melon3215.github.io/methodform-automation/csv-checker.html), no uploads and no account.
+
+
+
 **Live:** The CSV inspection utility was published to the public GitHub Pages site on 2026-11-17 and verified in live desktop Chrome. The feature originated on `feature/csv-checker-conversion` and was merged to `main` at commit `40ed43d`.
 
 ## Pages
 
-- `index.html`: existing static service landing page and the enquiry path using the GitHub Issue Form.
+- `index.html`: existing static service landing page, fixed-price offer card and buyer enquiry route.
+- `csv-merge-service.html`, `offer.css`, `assets/csv-service-cover.png`: public fixed-scope KRW 69,000 CSV processing service with price, limitations and direct enquiry link.
+- `.github/ISSUE_TEMPLATE/csv-merge-request.yml`: dedicated public scope questionnaire for the paid service; no payment or customer files are collected.
+- `robots.txt`, `sitemap.xml`: crawlable public URLs for home, free checker and paid service.
 - `csv-checker.html`: standalone SEO-friendly, browser-only CSV data-quality checker and route to the existing paid service enquiry.
 - `csv-core.mjs`: deterministic zero-dependency CSV parser, duplicate analyser, width validation, and safe CSV report generator.
 - `checker.js`, `checker.css`: user interface, controls, downloading and mobile layout.
 - `tests/csv-core.test.mjs`: Node unit tests.
 - `tests/browser_check.py`: real Chrome/Playwright tests and screenshots.
+- `tests/offer_browser_check.py`: real desktop/mobile browser tests for service page, conversion route, scoped terms and YAML form.
 
 ## Run locally
 
@@ -34,7 +48,7 @@ The browser test starts and shuts down its own ephemeral local server. Captures 
 ## Privacy and scope
 
 - All data parsing, normalization, duplicate detection, result rendering, and exports run in the current browser process. There is no form submission, analytics, network request, storage, remote API or telemetry in the utility.
-- Does not automatically send the customer's real file in a GitHub issue; the only outbound link is the existing opt-in public enquiry form. The form warns users to use synthetic examples and avoid secrets or personal information.
+- Does not automatically send the customer's real file in a GitHub issue; the outbound buyer links are opt-in public GitHub enquiry forms. The form warns users to use synthetic examples and avoid secrets or personal information.
 - Input is bounded to 2 MiB and 20,000 data records, at most 150 columns. UTF-8 CSV with comma, tab or semicolon delimiters is supported, with quoted commas, double quotes and embedded line breaks. XLSX and binary codepages are not supported.
 - One or more selectable keys determine repeated records. Comparison normalizes unicode width, leading/trailing spaces, spaces and English case. It does not imply that non-key fields are identical.
 - The original file is never changed. Export includes the original fields and separate result columns, using UTF-8 BOM for Excel and formula escaping to reduce spreadsheet injection risk.
