@@ -1,0 +1,67 @@
+name: "CSV 병합·중복 정리 69,000원 무료 범위 확인"
+description: "계약 전 작업 가능 범위 확인. 공개 이슈에 개인정보·실제 고객 자료를 올리지 마세요."
+title: "[CSV 정리 문의] "
+labels: ["customer-inquiry"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **기본 안내: 69,000원 / 최대 3개 UTF-8 CSV / 합계 5,000행·20열·2 MiB / 조건 확인 후 3영업일.**
+        이것은 **무료 범위 문의**이며, 접수만으로 결제나 계약이 성립하지 않습니다.
+        이 이슈는 **누구나 볼 수 있는 공개 게시물**입니다. 고객 개인정보, 실명·연락처, API 키, 주문 원본, 사내 비밀 자료, 계좌정보를 절대 올리지 마세요.
+        실제 예시 대신 개인정보가 없는 가상 행 다섯 줄만 사용해 주세요.
+  - type: dropdown
+    id: dataset-size
+    attributes:
+      label: 대략적인 파일 수 / How many CSV files?
+      options:
+        - "1개"
+        - "2개"
+        - "3개"
+        - "4개 이상 (별도 견적 필요)"
+    validations:
+      required: true
+  - type: dropdown
+    id: record-count
+    attributes:
+      label: 총 행 수 / Approximate number of rows
+      options:
+        - "500행 이하"
+        - "501~2,000행"
+        - "2,001~5,000행"
+        - "5,000행 초과 (별도 견적 필요)"
+    validations:
+      required: true
+  - type: textarea
+    id: columns
+    attributes:
+      label: 열 제목 및 열 구조 / Header names and structure
+      description: 민감한 실제 필드값을 쓰지 말고 열 이름만 기재해 주세요.
+      placeholder: "예: 상품코드, 상품명, 수량, 가격 — 파일마다 열 이름과 순서가 동일합니다."
+    validations:
+      required: true
+  - type: dropdown
+    id: deduplication
+    attributes:
+      label: 원하는 중복 처리 규칙
+      options:
+        - "전체 행의 내용이 같으면 한 행만 유지"
+        - "중복을 지우지 않고 모두 합치기"
+        - "잘 모르겠습니다 (상담 필요)"
+    validations:
+      required: true
+  - type: textarea
+    id: expected-output
+    attributes:
+      label: 원하는 결과 / Acceptance criteria
+      description: 가상 예시로 입력과 결과를 설명해 주세요.
+      placeholder: "예: 파일 3개를 합친 후 완전히 동일한 행만 중복 제외하고 원본 건수, 제외 건수를 기록해 주세요."
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 공개 문의의 개인정보 보호 확인
+      options:
+        - label: "이 문의에는 실제 고객 자료, 개인정보, 비밀번호, 계좌정보, API 키가 없습니다."
+          required: true
