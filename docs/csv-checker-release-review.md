@@ -35,3 +35,7 @@ When approved:
 5. Record deployment URL/time/commit, then measure traffic independently of GitHub repository views. Actual enquiries and paid orders are separate metrics; there is no cash evidence yet.
 
 Avoid client files, real identifiers, contact details, tokens, passwords and sensitive business documents in public GitHub Issues. The checker does not transmit an input file, but a user should still avoid running untrusted extensions on sensitive data.
+
+## Production release record (2026-11-17 09:55 KST)
+
+User directed immediate income acquisition; the completed tested feature was merged to public main and deployed. Published commit: 40ed43dbe7d6b9bf6059b51f4e5037f7b8df88aa. Public link: https://melon3215.github.io/methodform-automation/csv-checker.html . GitHub Actions Pages run 43990995628 completed successfully; live HTTP 200 and correct 	ext/javascript for .mjs checked; Playwright confirmed real CSV parsing and CSV download, 0 browser exceptions. The earlier unshipped-state paragraphs above are historical pre-deployment notes. No customer or payment has been verified. No additional personal data was uploaded to the GitHub repository.

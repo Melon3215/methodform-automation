@@ -4,7 +4,7 @@ Korean-language remote custom automation enquiry site and a free browser-only CS
 
 Public website: https://melon3215.github.io/methodform-automation/
 
-**Important:** The CSV inspection page is a local feature under `feature/csv-checker-conversion` until explicitly approved for publication. Do not describe it as available on the public website before it is deployed and verified.
+**Live:** The CSV inspection utility was published to the public GitHub Pages site on 2026-11-17 and verified in live desktop Chrome. The feature originated on `feature/csv-checker-conversion` and was merged to `main` at commit `40ed43d`.
 
 ## Pages
 
@@ -40,6 +40,6 @@ The browser test starts and shuts down its own ephemeral local server. Captures 
 - The original file is never changed. Export includes the original fields and separate result columns, using UTF-8 BOM for Excel and formula escaping to reduce spreadsheet injection risk.
 - This is a practical convenience checker, not formal data certification, legal advice, or verified full document recovery.
 
-## Publication boundary
+## Production deployment and monitoring
 
-The user has not specifically approved publishing this new website feature. Keep this work local until a distinct publication decision. Before release, verify that GitHub Pages serves .mjs files with the JavaScript MIME type, run the Chrome checks against the actual public URL, and record a deployment receipt. Visitor counts and paid orders must be measured separately; repository traffic is not Pages traffic.
+Production URL: https://melon3215.github.io/methodform-automation/csv-checker.html. The GitHub Pages build for commit `40ed43dbe7d6b9bf6059b51f4e5037f7b8df88aa` completed successfully. Live HTTP checks returned 200 on home, checker, module, CSS, JS and favicon; `.mjs` is served as `text/javascript`. A real Chrome test exercised the published CTA, accurate sample analysis and CSV download with zero browser exceptions. Evidence is in ignored `.local-evidence/live_verification.json`; no client content was saved. This deployment is an acquisition experiment, not verified revenue. Monitor actual inquiries/accepted quotes and paid settlements; GitHub repository views are not Pages traffic.
